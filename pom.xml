@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>CleaningScheme</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Project to randomly select users to have cleaning duty</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -42,7 +42,6 @@
             <version>2.9.4</version>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -70,6 +69,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>CleaningScheme</finalName>
     </build>
 
 
