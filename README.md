@@ -1,4 +1,4 @@
-# CleaningScheme
+# CleaningDuty
 
 This application fetches users dynamically from a CSV and exposes them via a endpoint ("/scheme").
 

@@ -1,4 +1,4 @@
-package se.studentnatet.se.cleaningscheme.entities;
+package se.studentnatet.se.cleaningduty.entities;
 
 /**
  * Only a wrapper class for other entities in the project.

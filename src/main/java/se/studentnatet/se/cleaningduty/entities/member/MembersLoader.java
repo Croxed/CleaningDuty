@@ -1,11 +1,11 @@
-package se.studentnatet.se.cleaningscheme.entities.member;
+package se.studentnatet.se.cleaningduty.entities.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import se.studentnatet.se.cleaningscheme.controller.EntityController;
-import se.studentnatet.se.cleaningscheme.csv.CSVLoader;
-import se.studentnatet.se.cleaningscheme.entities.Entity;
+import se.studentnatet.se.cleaningduty.controller.EntityController;
+import se.studentnatet.se.cleaningduty.csv.CSVLoader;
+import se.studentnatet.se.cleaningduty.entities.Entity;
 
 import java.io.IOException;
 import java.util.List;

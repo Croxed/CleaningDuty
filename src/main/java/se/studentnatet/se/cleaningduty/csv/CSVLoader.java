@@ -1,10 +1,10 @@
-package se.studentnatet.se.cleaningscheme.csv;
+package se.studentnatet.se.cleaningduty.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Component;
-import se.studentnatet.se.cleaningscheme.entities.Entity;
-import se.studentnatet.se.cleaningscheme.entities.user.User;
+import se.studentnatet.se.cleaningduty.entities.Entity;
+import se.studentnatet.se.cleaningduty.entities.user.User;
 
 import java.io.IOException;
 import java.io.Reader;

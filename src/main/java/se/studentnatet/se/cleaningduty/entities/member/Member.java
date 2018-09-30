@@ -1,10 +1,10 @@
-package se.studentnatet.se.cleaningscheme.entities.user;
+package se.studentnatet.se.cleaningduty.entities.member;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.csv.CSVRecord;
-import se.studentnatet.se.cleaningscheme.entities.Entity;
+import se.studentnatet.se.cleaningduty.entities.Entity;
 
-public class User extends Entity
+public class Member extends Entity
 {
 	@JsonProperty("first_name")
 	public final String firstName;
@@ -12,6 +12,8 @@ public class User extends Entity
 	public final String lastName;
 	@JsonProperty("login")
 	public final String login;
+	@JsonProperty("rank")
+	public final String rank;
 
 	/**
 	 * Build a User from a {@link CSVRecord}
@@ -19,10 +21,11 @@ public class User extends Entity
 	 * @param record
 	 * @return
 	 */
-	public User (CSVRecord record)
+	public Member(CSVRecord record)
 	{
 		firstName = record.get("firstname");
 		lastName = record.get("lastname");
 		login = record.get("login");
+		rank = record.get("rank");
 	}
 }

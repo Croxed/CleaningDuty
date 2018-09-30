@@ -1,8 +1,8 @@
-package se.studentnatet.se.cleaningscheme.controller;
+package se.studentnatet.se.cleaningduty.controller;
 
 import org.springframework.stereotype.Component;
-import se.studentnatet.se.cleaningscheme.entities.Entity;
-import se.studentnatet.se.cleaningscheme.entities.EntityLoader;
+import se.studentnatet.se.cleaningduty.entities.Entity;
+import se.studentnatet.se.cleaningduty.entities.EntityLoader;
 
 import java.util.ArrayList;
 import java.util.List;

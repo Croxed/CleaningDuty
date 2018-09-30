@@ -1,14 +1,14 @@
-package se.studentnatet.se.cleaningscheme;
+package se.studentnatet.se.cleaningduty;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CleaningSchemeApplication
+public class CleaningDutyApplication
 {
 
 	public static void main(String[] args)
 	{
-		SpringApplication.run(CleaningSchemeApplication.class, args);
+		SpringApplication.run(CleaningDutyApplication.class, args);
 	}
 }

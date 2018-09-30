@@ -1,4 +1,4 @@
-package se.studentnatet.se.cleaningscheme.controller;
+package se.studentnatet.se.cleaningduty.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import se.studentnatet.se.cleaningscheme.entities.Entity;
+import se.studentnatet.se.cleaningduty.entities.Entity;
 
 import java.io.IOException;
 import java.util.ArrayList;

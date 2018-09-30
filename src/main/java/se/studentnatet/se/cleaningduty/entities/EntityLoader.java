@@ -1,4 +1,4 @@
-package se.studentnatet.se.cleaningscheme.entities;
+package se.studentnatet.se.cleaningduty.entities;
 
 import java.util.List;
 
