@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import se.studentnatet.se.cleaningscheme.csv.User;
-import se.studentnatet.se.cleaningscheme.csv.UsersLoader;
+import se.studentnatet.se.cleaningscheme.entities.Entity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,25 +19,25 @@ import java.util.List;
 class CleaningSchemeController
 {
 
-	private final UsersLoader loader;
-	private List<User> users = new ArrayList<>();
-	private List<User> returnList = Collections.synchronizedList(new ArrayList<>());
+	private final EntityController entityController;
+	private List<Entity> users = new ArrayList<>();
+	private List<Entity> returnList = Collections.synchronizedList(new ArrayList<>());
 
 	@Autowired
-	CleaningSchemeController(UsersLoader loader)
+	CleaningSchemeController(EntityController entityController)
 	{
-		this.loader = loader;
+
+		this.entityController = entityController;
 	}
 
 	/**
 	 * Load all members into list after the application has launched
 	 *
-	 * @throws IOException
 	 */
 	@EventListener
-	public void postConstruct(ContextRefreshedEvent re) throws IOException
+	public void postConstruct(ContextRefreshedEvent re)
 	{
-		this.users = loader.getUsers();
+		this.users = entityController.getEntities();
 		for (int i = 0; i < 2; i++)
 		{
 			returnList.add(users.remove((int) (Math.random() * users.size())));
@@ -48,13 +47,12 @@ class CleaningSchemeController
 	/**
 	 * Run once every tuesday at 19:30.
 	 *
-	 * @throws IOException
 	 */
 	@Scheduled(cron = "0 30 19 * * TUE")
-	private void newScheme() throws IOException
+	private void newScheme()
 	{
 		if (users.size() < 2)
-			users = loader.getUsers();
+			users = entityController.getEntities();
 
 		returnList.clear();
 		for (int i = 0; i < 2; i++)
@@ -65,7 +63,7 @@ class CleaningSchemeController
 
 	@RequestMapping("/scheme")
 	@ResponseBody
-	List<User> getCleaningScheme(
+	List<Entity> getCleaningScheme(
 		@RequestParam(value = "reload",
 					  defaultValue = "false")
 			Boolean reload) throws IOException

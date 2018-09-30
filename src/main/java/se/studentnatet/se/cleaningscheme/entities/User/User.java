@@ -1,13 +1,10 @@
-package se.studentnatet.se.cleaningscheme.csv;
+package se.studentnatet.se.cleaningscheme.entities.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.apache.commons.csv.CSVRecord;
+import se.studentnatet.se.cleaningscheme.entities.Entity;
 
-@Getter
-@AllArgsConstructor
-public class User
+public class User extends Entity
 {
 	@JsonProperty("first_name")
 	public final String firstName;
@@ -22,8 +19,10 @@ public class User
 	 * @param record
 	 * @return
 	 */
-	static User fromRecord(CSVRecord record)
+	public User (CSVRecord record)
 	{
-		return new User(record.get("firstname"), record.get("lastname"), record.get("login"));
+		firstName = record.get("firstname");
+		lastName = record.get("lastname");
+		login = record.get("login");
 	}
 }
