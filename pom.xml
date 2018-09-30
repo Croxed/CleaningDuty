@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>se.studentnatet.se</groupId>
-    <artifactId>CleaningScheme</artifactId>
+    <artifactId>CleaningDuty</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -69,7 +69,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <finalName>CleaningScheme</finalName>
+        <finalName>${project.name}</finalName>
     </build>
 
 
