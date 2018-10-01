@@ -3,9 +3,8 @@ package se.studentnatet.se.cleaningduty.entities.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import se.studentnatet.se.cleaningduty.controller.EntityController;
+import se.studentnatet.se.cleaningduty.entities.EntityAPI;
 import se.studentnatet.se.cleaningduty.csv.CSVLoader;
-import se.studentnatet.se.cleaningduty.entities.Entity;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,10 +18,10 @@ public class MembersLoader
 	private String csvPath;
 
 	@Autowired
-	public MembersLoader(CSVLoader csvLoader, EntityController entityController)
+	public MembersLoader(CSVLoader csvLoader, EntityAPI entityAPI)
 	{
 		this.csvLoader = csvLoader;
-		entityController.register(this::getMembers);
+		entityAPI.register(this::getMembers);
 	}
 
 	/**
@@ -31,7 +30,7 @@ public class MembersLoader
 	 * @return
 	 * @throws RuntimeException
 	 */
-	public List<Entity> getMembers() throws RuntimeException
+	private List<Object> getMembers() throws RuntimeException
 	{
 		try
 		{

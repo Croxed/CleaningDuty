@@ -2,9 +2,8 @@ package se.studentnatet.se.cleaningduty.entities.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.csv.CSVRecord;
-import se.studentnatet.se.cleaningduty.entities.Entity;
 
-public class User extends Entity
+public class User
 {
 	@JsonProperty("first_name")
 	public final String firstName;
@@ -19,7 +18,7 @@ public class User extends Entity
 	 * @param record
 	 * @return
 	 */
-	public User (CSVRecord record)
+	public User(CSVRecord record)
 	{
 		firstName = record.get("firstname");
 		lastName = record.get("lastname");
