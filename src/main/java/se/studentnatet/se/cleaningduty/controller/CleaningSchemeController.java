@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import se.studentnatet.se.cleaningduty.entities.Entity;
+import se.studentnatet.se.cleaningduty.entities.EntityAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,15 +19,15 @@ import java.util.List;
 class CleaningSchemeController
 {
 
-	private final EntityController entityController;
-	private List<Entity> users = new ArrayList<>();
-	private List<Entity> returnList = Collections.synchronizedList(new ArrayList<>());
+	private final EntityAPI entityAPI;
+	private List<Object> users = new ArrayList<>();
+	private List<Object> returnList = Collections.synchronizedList(new ArrayList<>());
 
 	@Autowired
-	CleaningSchemeController(EntityController entityController)
+	CleaningSchemeController(EntityAPI entityAPI)
 	{
 
-		this.entityController = entityController;
+		this.entityAPI = entityAPI;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class CleaningSchemeController
 	@EventListener
 	public void postConstruct(ContextRefreshedEvent re)
 	{
-		this.users = entityController.getEntities();
+		this.users = entityAPI.getEntities();
 		for (int i = 0; i < 2; i++)
 		{
 			returnList.add(users.remove((int) (Math.random() * users.size())));
@@ -52,7 +52,7 @@ class CleaningSchemeController
 	private void newScheme()
 	{
 		if (users.size() < 2)
-			users = entityController.getEntities();
+			users = entityAPI.getEntities();
 
 		returnList.clear();
 		for (int i = 0; i < 2; i++)
@@ -63,7 +63,7 @@ class CleaningSchemeController
 
 	@RequestMapping("/scheme")
 	@ResponseBody
-	List<Entity> getCleaningScheme(
+	List<Object> getCleaningScheme(
 		@RequestParam(value = "reload",
 					  defaultValue = "false")
 			Boolean reload) throws IOException

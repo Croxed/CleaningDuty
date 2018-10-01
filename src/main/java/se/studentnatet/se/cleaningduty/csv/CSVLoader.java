@@ -3,7 +3,6 @@ package se.studentnatet.se.cleaningduty.csv;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Component;
-import se.studentnatet.se.cleaningduty.entities.Entity;
 import se.studentnatet.se.cleaningduty.entities.user.User;
 
 import java.io.IOException;
@@ -26,7 +25,7 @@ public class CSVLoader
 	 * @return List of {@link User}s
 	 * @throws IOException
 	 */
-	public List<Entity> loadObjectList(String filename, Function<CSVRecord, Entity> callback) throws IOException
+	public List<Object> loadObjectList(String filename, Function<CSVRecord, Object> callback) throws IOException
 	{
 		// Readers are closable, so put them in a try-with-resource block to automatically close them
 		try (Reader reader = Files.newBufferedReader(Paths.get(filename)))

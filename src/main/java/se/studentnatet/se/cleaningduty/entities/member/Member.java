@@ -2,9 +2,8 @@ package se.studentnatet.se.cleaningduty.entities.member;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.csv.CSVRecord;
-import se.studentnatet.se.cleaningduty.entities.Entity;
 
-public class Member extends Entity
+public class Member
 {
 	@JsonProperty("first_name")
 	public final String firstName;
