@@ -32,6 +32,9 @@ public class EntityAPI
 	 */
 	public List<Object> getEntities()
 	{
-		return loaders.stream().map(ObjectLoader::getEntities).flatMap(List::stream).collect(Collectors.toList());
+        return loaders.stream()
+                .map(ObjectLoader::getEntities)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
 	}
 }
