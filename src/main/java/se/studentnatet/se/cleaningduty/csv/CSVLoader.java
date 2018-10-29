@@ -34,7 +34,9 @@ public class CSVLoader
 			// Java Streams are cool. We use them to minimize the usage of one-line for-loops.
 			// We also utilize Function from Java to generalize the method.
 			// We can pass any method that has CSVRecord as parameter and returns Entity as parameter to this method
-			return StreamSupport.stream(records.spliterator(), false).map(callback).collect(Collectors.toList());
+            return StreamSupport.stream(records.spliterator(), false)
+                    .map(callback)
+                    .collect(Collectors.toList());
 		}
 	}
 }
