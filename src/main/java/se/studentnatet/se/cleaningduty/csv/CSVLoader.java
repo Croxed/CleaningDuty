@@ -15,28 +15,26 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Component
-public class CSVLoader
-{
-	/**
-	 * Returns a list of user found in CSV
-	 *
-	 * @param filename
-	 * 	path to CSV
-	 * @return List of {@link User}s
-	 * @throws IOException
-	 */
-	public List<Object> loadObjectList(String filename, Function<CSVRecord, Object> callback) throws IOException
-	{
-		// Readers are closable, so put them in a try-with-resource block to automatically close them
-		try (Reader reader = Files.newBufferedReader(Paths.get(filename)))
-		{
-			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(reader);
-			// Java Streams are cool. We use them to minimize the usage of one-line for-loops.
-			// We also utilize Function from Java to generalize the method.
-			// We can pass any method that has CSVRecord as parameter and returns Entity as parameter to this method
-            return StreamSupport.stream(records.spliterator(), false)
-                    .map(callback)
-                    .collect(Collectors.toList());
-		}
-	}
+public class CSVLoader {
+  /**
+   * Returns a list of user found in CSV
+   *
+   * @param filename path to CSV
+   * @return List of {@link User}s
+   * @throws IOException
+   */
+  public List<Object> loadObjectList(String filename, Function<CSVRecord, Object> callback)
+      throws IOException {
+    // Readers are closable, so put them in a try-with-resource block to automatically close them
+    try (Reader reader = Files.newBufferedReader(Paths.get(filename))) {
+      Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(reader);
+      // Java Streams are cool. We use them to minimize the usage of one-line for-loops.
+      // We also utilize Function from Java to generalize the method.
+      // We can pass any method that has CSVRecord as parameter and returns Entity as parameter to
+      // this method
+      return StreamSupport.stream(records.spliterator(), false)
+          .map(callback)
+          .collect(Collectors.toList());
+    }
+  }
 }

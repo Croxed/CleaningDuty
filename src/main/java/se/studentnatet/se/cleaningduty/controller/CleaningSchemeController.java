@@ -16,60 +16,43 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-class CleaningSchemeController
-{
+class CleaningSchemeController {
 
-	private final EntityAPI entityAPI;
-	private List<Object> users = new ArrayList<>();
-	private List<Object> returnList = Collections.synchronizedList(new ArrayList<>());
+  private final EntityAPI entityAPI;
+  private List<Object> users = new ArrayList<>();
+  private final List<Object> returnList = Collections.synchronizedList(new ArrayList<>());
 
-	@Autowired
-	CleaningSchemeController(EntityAPI entityAPI)
-	{
+  @Autowired
+  CleaningSchemeController(EntityAPI entityAPI) {
 
-		this.entityAPI = entityAPI;
-	}
+    this.entityAPI = entityAPI;
+  }
 
-	/**
-	 * Load all members into list after the application has launched
-	 *
-	 */
-	@EventListener
-	public void postConstruct(ContextRefreshedEvent re)
-	{
-		this.users = entityAPI.getEntities();
-		for (int i = 0; i < 2; i++)
-		{
-			returnList.add(users.remove((int) (Math.random() * users.size())));
-		}
-	}
+  /** Load all members into list after the application has launched */
+  @EventListener
+  public void postConstruct(ContextRefreshedEvent re) {
+    this.users = entityAPI.getEntities();
+    for (int i = 0; i < 2; i++) {
+      returnList.add(users.remove((int) (Math.random() * users.size())));
+    }
+  }
 
-	/**
-	 * Run once every tuesday at 19:30.
-	 *
-	 */
-	@Scheduled(cron = "0 30 19 * * TUE")
-	private void newScheme()
-	{
-		if (users.size() < 2)
-			users = entityAPI.getEntities();
+  /** Run once every tuesday at 19:30. */
+  @Scheduled(cron = "0 30 19 * * TUE")
+  private void newScheme() {
+    if (users.size() < 2) users = entityAPI.getEntities();
 
-		returnList.clear();
-		for (int i = 0; i < 2; i++)
-		{
-			returnList.add(users.remove((int) (Math.random() * users.size())));
-		}
-	}
+    returnList.clear();
+    for (int i = 0; i < 2; i++) {
+      returnList.add(users.remove((int) (Math.random() * users.size())));
+    }
+  }
 
-	@RequestMapping("/scheme")
-	@ResponseBody
-	List<Object> getCleaningScheme(
-		@RequestParam(value = "reload",
-					  defaultValue = "false")
-			Boolean reload) throws IOException
-	{
-		if (reload)
-			newScheme();
-		return returnList;
-	}
+  @RequestMapping("/scheme")
+  @ResponseBody
+  List<Object> getCleaningScheme(
+      @RequestParam(value = "reload", defaultValue = "false") Boolean reload) throws IOException {
+    if (reload) newScheme();
+    return returnList;
+  }
 }

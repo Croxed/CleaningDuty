@@ -6,11 +6,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class CleaningDutyApplication
-{
+public class CleaningDutyApplication {
 
-	public static void main(String[] args)
-	{
-		SpringApplication.run(CleaningDutyApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(CleaningDutyApplication.class, args);
+  }
 }
