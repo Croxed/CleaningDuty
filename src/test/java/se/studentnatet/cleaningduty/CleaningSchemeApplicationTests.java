@@ -1,4 +1,4 @@
-package se.studentnatet.se.cleaningduty;
+package se.studentnatet.cleaningduty;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
