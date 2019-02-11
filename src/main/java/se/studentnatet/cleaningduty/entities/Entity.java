@@ -1,5 +1,3 @@
 package se.studentnatet.cleaningduty.entities;
 
-public abstract class Entity
-{
-}
+public abstract class Entity {}

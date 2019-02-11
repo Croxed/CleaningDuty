@@ -2,11 +2,8 @@ package se.studentnatet.cleaningduty.entities;
 
 import java.util.List;
 
-/**
- * Interface to be used when parsing new objects from CSV
- */
+/** Interface to be used when parsing new objects from CSV */
 @FunctionalInterface
-public interface EntityLoader
-{
-	List<? extends Entity> getEntities();
+public interface EntityLoader {
+  List<? extends Entity> getEntities();
 }
